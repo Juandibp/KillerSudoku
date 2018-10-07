@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace KillerSudoku_Master
 {
-    static class Program
+    /*static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -18,5 +18,5 @@ namespace KillerSudoku_Master
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
-    }
+    }*/
 }
