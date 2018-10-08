@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KillerSudoku_Master
 {
-	class Board
+	public class Board
 	{
 		public Cell[][] cells;
 		public int size;
@@ -17,7 +17,7 @@ namespace KillerSudoku_Master
 
 		int prob1,prob2,prob4,probSum,probMult;
 
-		public static sealed string[] indexcolors = new string[] {
+		public static string[] indexcolors = new string[] {
 		"#E83000", "#FFAB00", "#E91E63", "#04F757", "#304FFE", "#A3C8C9", "#636375",
 		"#C8D0F6", "#FF8A9A", "#A77500", "#3B9700", "#AEEA00", "#CB7E98", "#D0AC94",
 		"#FF5722", "#AA00FF", "#6367A9", "#3F51B5", "#FF6F00", "#795548", "#03A9F4",
@@ -44,9 +44,9 @@ namespace KillerSudoku_Master
 			this.size = other.size;
 			this.possibleNum = new List<int>(other.possibleNum);
 			this.operations = new List<Operation>();
-			this.possibleNumRows = ListMatrix.copyArrayList(other.possibleNumRows);
+			this.possibleNumRows = ArrayListMatrix.copyArrayList(other.possibleNumRows);
 			this.possibleNumColumns = ArrayListMatrix.copyArrayList(other.possibleNumColumns);
-			this.cells = new Cell[size][size];
+			this.cells = new Cell[size][];
 			this.prob1 = other.prob1;
 			this.prob2 = other.prob2;
 			this.prob4 = other.prob4;
@@ -60,9 +60,10 @@ namespace KillerSudoku_Master
 					cells[y][x] = new Cell(other.cells[y][x]);
 				}
 			}
-
-			for(Operation op : other.operations)
+			Operation op;
+			for(int i=0;i<other.operations.Count;i++)
 			{
+				op = other.operations.ElementAt(i);
 				this.operations.Add(new Operation(op, cells));
 			}
 		}
@@ -79,7 +80,7 @@ namespace KillerSudoku_Master
 			this.probMult = pProbMult;
 			possibleNum = new List<int>(boardSize);
 			size = boardSize;
-			cells = new Cell[boardSize][boardSize];
+			cells = new Cell[boardSize][];
 			operations = new List<Operation>();
 			rand = 0;
 
@@ -129,9 +130,10 @@ namespace KillerSudoku_Master
 
 		public void setCellsToZero()
 		{
-			operations.ForEach(Operation-> {
-				Operation.setCellsToZero();
-			});
+			foreach (Operation op in operations)
+			{
+				op.setCellsToZero();
+			}
 		}
 
 		public bool isSafe(Cell cell, int num)
@@ -237,8 +239,9 @@ namespace KillerSudoku_Master
 						if (shape != null)
 						{
 							cagedAmount += 3;
-							for (Cell part : shape)
+							for (int i=0;i<shape.Count;i++)
 							{
+								Cell part = shape.ElementAt(i);
 								op.addCell(part);
 							}
 

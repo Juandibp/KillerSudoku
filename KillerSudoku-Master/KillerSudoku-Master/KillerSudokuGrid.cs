@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace KillerSudoku_Master
 {
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class KillerSudokuGrid : Form
+	{
+		public KillerSudokuGrid()
+		{
+			InitializeComponent();
+		}
+
+		private void clearButton_Click(object sender, EventArgs e)
+		{
+			desplegarSinSolucion();
+		}
+
+
+	}
 }

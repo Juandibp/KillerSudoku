@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KillerSudoku_Master
 {
-	class Cell : IComparable<Cell>
+	public class Cell : IComparable<Cell>
 	{
 		public int number;
 		public int posX;

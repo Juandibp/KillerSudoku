@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KillerSudoku_Master
 {
-	class Operation : IComparable<Operation>
+	public class Operation : IComparable<Operation>
 	{
 		public OperationType operationType;
 		public int operationId;
@@ -14,7 +14,7 @@ namespace KillerSudoku_Master
 		public int operationResult;
 		public List<Cell> cells;
 
-		public enum OperationType { MULT, SUM }
+		public static enum OperationType { MULT, SUM }
 
 		public Operation(int id)
 		{
