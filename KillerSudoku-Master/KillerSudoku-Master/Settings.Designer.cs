@@ -7,6 +7,12 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
+		public Settings(KillerSudokuFrame parent)
+		{
+			this.parent = parent;
+			InitializeComponent();
+		}
+
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
@@ -221,7 +227,7 @@
 			this.Controls.Add(this.labelPanel);
 			this.Name = "Settings";
 			this.Text = "Settings";
-			this.Load += new System.EventHandler(this.Settings_Load);
+			//this.Load += new System.EventHandler(this.loadSettings());
 			this.labelPanel.ResumeLayout(false);
 			this.labelPanel.PerformLayout();
 			this.textPanel.ResumeLayout(false);

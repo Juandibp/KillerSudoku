@@ -493,16 +493,16 @@ namespace KillerSudoku_Master
 
 			switch (op.operationType)
 			{
-				case MULT:
+				case OperationType.MULT:
 					solutions = possibleMultiplicationSubset(op.cellAmount, op.operationResult, possibleNum, new List<int>(), new List<List<int>>());
 					break;
-				case SUM:
+				case OperationType.SUM:
 					solutions = possibleSumSubset(op.cellAmount, op.operationResult, possibleNum, new List<int>(), new List<List<int>>());
 					break;
 
 
 			}
-			if (op.operationType == Operation.OperationType.SUM || op.operationType == Operation.OperationType.MULT)
+			if (op.operationType == OperationType.SUM || op.operationType == OperationType.MULT)
 			{
 				solutions = getAllPermutations(new List<List<int>>(solutions)); //hay que encontrar las permutaciones de las posibilidades dadas
 			}
