@@ -12,10 +12,6 @@ namespace KillerSudoku_Master
 {
 	public partial class KillerSudokuFrame : Form
 	{
-		public KillerSudokuFrame()
-		{
-			InitializeComponent();
-		}
 
 		private void fileToolStripMenuItem_Click(object sender, EventArgs e)
 		{

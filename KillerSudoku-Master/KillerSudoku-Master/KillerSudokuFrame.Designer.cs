@@ -1,4 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Linq;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace KillerSudoku_Master
 {
@@ -7,6 +11,7 @@ namespace KillerSudoku_Master
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
+		
 		private System.ComponentModel.IContainer components = null;
 
 		private Panel frame = new Panel();
@@ -23,23 +28,67 @@ namespace KillerSudoku_Master
 
 		public KillerSudokuFrame()
 		{
-			//TODO: save/load files
-			//loadSettings();
-			frame.Controls.Add(grid = new KillerSudokuGrid(5,prob1,prob2,prob4,probSum,probMult,threadAmount));
-			buildMenu();
+			loadSettings();
+			frame.Controls.Add(grid = new KillerSudokuGrid(5, prob1, prob2, prob4, probSum, probMult, threadAmount));
 			CenterToParent();
 			frame.Visible = true;
-		}
-
-
-		private void buildMenu()
-		{
-
+			InitializeComponent(); 
 		}
 
 		public Panel getPanel()
 		{
-			return this.panel;
+			return this.frame;
+		}
+
+		public void loadSettings()
+		{
+			try {
+				//deserialize JSON directly from a file
+				using (StreamReader file = File.OpenText(@"D:\Users\josep\Documents\GitRepos\KillerSudoku\Settings.json"))
+				{
+					JsonSerializer serializer = new JsonSerializer();
+					List<int> settings = (List<int>)serializer.Deserialize(file, typeof(List<int>));
+
+					this.prob1 = settings.ElementAt(0);
+					this.prob2 = settings.ElementAt(1);
+					this.prob4 = settings.ElementAt(2);
+					this.probSum = settings.ElementAt(3);
+					this.probMult = settings.ElementAt(4);
+					this.threadAmount = settings.ElementAt(5);
+				}
+			}
+			catch (IOException)
+			{
+				loadDefaultSettings();
+			}
+		}
+
+		public void saveSettings(List<int> settings)
+		{
+			try { 
+				JsonSerializer ser = new JsonSerializer();
+				using (StreamWriter sw = new StreamWriter(@"D:\Users\josep\Documents\GitRepos\KillerSudoku\Settings.json"))
+				using (JsonWriter writer = new JsonTextWriter(sw))
+				{
+					ser.Serialize(writer, settings);
+				}
+				frame.Controls.Clear();
+				frame.Controls.Add(grid = new KillerSudokuGrid(grid.initialGameBoard.size,prob1,prob2,prob4,probSum,probMult,threadAmount));
+			}
+			catch (IOException)
+			{
+				MessageBox.Show("File not found.");
+			}
+		}
+
+		public void loadDefaultSettings()
+		{
+			this.prob1 = 20;
+			this.prob2 = 40;
+			this.prob4 = 40;
+			this.probSum = 5;
+			this.probMult = 35;
+			this.threadAmount = 1;
 		}
 
 		/// <summary>
