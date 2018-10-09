@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace KillerSudoku_Master
 {
-	public enum OperationType { MULT, SUM }
 	public class Operation : IComparable<Operation>
 	{
 		public OperationType operationType;
@@ -14,6 +13,8 @@ namespace KillerSudoku_Master
 		public int cellAmount;
 		public int operationResult;
 		public List<Cell> cells;
+
+		public static enum OperationType { MULT, SUM }
 
 		public Operation(int id)
 		{
@@ -42,6 +43,7 @@ namespace KillerSudoku_Master
 			this.cells.Add(cell);
 			this.cellAmount++;
 		}
+
 
 		public void generateResult()
 		{
@@ -75,6 +77,7 @@ namespace KillerSudoku_Master
 
 		public void generateOperation(int probSum, int probMult)
 		{
+
 			Random r = new Random();
 			cells.Sort();
 			if (r.Next(10) < 5)
@@ -97,6 +100,7 @@ namespace KillerSudoku_Master
 						{
 							operationType = OperationType.SUM;
 						}
+
 						break;
 
 					case 2:
@@ -115,10 +119,12 @@ namespace KillerSudoku_Master
 						{
 							operationType = OperationType.SUM;
 						}
+
 						break;
 				}
 				generateResult();
 			}
+
 		}
 
 		public int Compare(int x, int y)

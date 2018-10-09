@@ -13,6 +13,16 @@ namespace KillerSudoku_Master
 	public partial class Settings : Form
 	{
 		public KillerSudokuFrame parent;
+		public Settings(KillerSudokuFrame parent)
+		{
+			this.parent = parent;
+			InitializeComponent();
+		}
+
+		/*private void Settings_Load(object sender, EventArgs e)
+		{
+
+		}*/
 
 		private void applyBtn_Click(object sender, EventArgs e)
 		{
