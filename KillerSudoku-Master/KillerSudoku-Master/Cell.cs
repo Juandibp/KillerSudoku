@@ -39,8 +39,7 @@ namespace KillerSudoku_Master
 			{
 				return this.posX.CompareTo(another.posX);
 			}
-		}		
-
+		}
 	}
 }
 

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KillerSudoku_Master
 {
@@ -47,18 +46,22 @@ namespace KillerSudoku_Master
 		public void generateResult()
 		{
 			int auxResult = 0;
-			switch (operationType)
+			Debug.WriteLine("operationType= " + this.operationType.ToString());
+			switch (this.operationType)
 			{
 				case OperationType.POWER:
+					//Debug.WriteLine(operationType.ToString() + ":" + OperationType.POWER);
 					auxResult = (int)Math.Pow(cells.ElementAt(0).number, 3);
 					break;
 				case OperationType.SUM:
+					//Debug.WriteLine(operationType.ToString() + ":" + OperationType.SUM);
 					for (int i = 0; i < cells.Count; i++)
 					{
 						auxResult = auxResult + cells.ElementAt(i).number;
 					}
 					break;
 				case OperationType.MULT:
+					//Debug.WriteLine(operationType.ToString()+":"+OperationType.MULT);
 					auxResult = 1;
 					for (int i = 0; i < cells.Count; i++)
 					{
@@ -66,7 +69,7 @@ namespace KillerSudoku_Master
 					}
 					break;
 			}
-			operationResult = auxResult;
+			this.operationResult = auxResult;
 		}
 
 		public void setCellsToZero()
@@ -105,45 +108,26 @@ namespace KillerSudoku_Master
 						{
 							operationType = OperationType.SUM;
 						}
-
 						break;
 
 					case 3:
 
-						if (r.Next() < probMult)
+						if (r.Next(100) < probMult)
 						{
 							if (OperationValidator.notZero(cells))
 							{
-								if (OperationValidator.notZero(cells))
-								{
-									operationType = OperationType.MULT;
-								}
+								operationType = OperationType.MULT;	
 							}
 						}
-						else if (r.Next() < probSum)
+						else if (r.Next(100) < probSum)
 						{
 							operationType = OperationType.SUM;
 						}
-
 						break;
 				}
 				generateResult();
 			}
 
-		}
-
-		public int Compare(int x, int y)
-		{
-			if (x == y)
-			{
-				return 0;
-			} else if (x < y) {
-				return -1;
-			}
-			else
-			{
-				return 1;
-			}
 		}
 
 		private String getOperationCharacter()
@@ -155,15 +139,13 @@ namespace KillerSudoku_Master
 				case OperationType.SUM:
 					return "+";
 				case OperationType.MULT:
-					return "*";
-				default:
-					return "";
+					return "*";	
 			}
-
+			return "";
 		}
 
-		override
-		public String ToString()
+		
+		public override String ToString()
 		{
 			String result;
 			if (operationResult % 1 == 0)
@@ -186,11 +168,11 @@ namespace KillerSudoku_Master
 			int numb = cell.number;
 			if (numb > 0)
 			{
-				result = result + '\n' + "     " + cells.ElementAt(0).number;
+				result = result + +'\t' + "     " + cells.ElementAt(0).number;
 			}
 			else
 			{
-				result = result + '\n' + "     " + cells.ElementAt(0).number;
+				result = result + '\t' + "     " + cells.ElementAt(0).number;
 			}
 			return result;
 		}
@@ -204,7 +186,7 @@ namespace KillerSudoku_Master
 
 			if (numb > -1)
 			{
-				result = result + '\n' + "      " + numb;
+				result = result + '\t' + "      " + numb;
 			}
 			return result;
 		}
