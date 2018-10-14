@@ -38,12 +38,12 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.applyBtn = new System.Windows.Forms.Button();
 			this.textPanel = new System.Windows.Forms.Panel();
-			this.threadAmountText = new System.Windows.Forms.TextBox();
-			this.prob1Text = new System.Windows.Forms.TextBox();
-			this.prob2Text = new System.Windows.Forms.TextBox();
-			this.prob4Text = new System.Windows.Forms.TextBox();
-			this.probSumText = new System.Windows.Forms.TextBox();
 			this.probMultText = new System.Windows.Forms.TextBox();
+			this.probSumText = new System.Windows.Forms.TextBox();
+			this.prob4Text = new System.Windows.Forms.TextBox();
+			this.prob2Text = new System.Windows.Forms.TextBox();
+			this.prob1Text = new System.Windows.Forms.TextBox();
+			this.threadAmountText = new System.Windows.Forms.TextBox();
 			this.cancelBtn = new System.Windows.Forms.Button();
 			this.labelPanel.SuspendLayout();
 			this.textPanel.SuspendLayout();
@@ -155,33 +155,12 @@
 			this.textPanel.Size = new System.Drawing.Size(219, 359);
 			this.textPanel.TabIndex = 12;
 			// 
-			// threadAmountText
+			// probMultText
 			// 
-			this.threadAmountText.Location = new System.Drawing.Point(28, 25);
-			this.threadAmountText.Name = "threadAmountText";
-			this.threadAmountText.Size = new System.Drawing.Size(161, 20);
-			this.threadAmountText.TabIndex = 0;
-			// 
-			// prob1Text
-			// 
-			this.prob1Text.Location = new System.Drawing.Point(28, 85);
-			this.prob1Text.Name = "prob1Text";
-			this.prob1Text.Size = new System.Drawing.Size(161, 20);
-			this.prob1Text.TabIndex = 1;
-			// 
-			// prob2Text
-			// 
-			this.prob2Text.Location = new System.Drawing.Point(28, 151);
-			this.prob2Text.Name = "prob2Text";
-			this.prob2Text.Size = new System.Drawing.Size(161, 20);
-			this.prob2Text.TabIndex = 2;
-			// 
-			// prob4Text
-			// 
-			this.prob4Text.Location = new System.Drawing.Point(28, 208);
-			this.prob4Text.Name = "prob4Text";
-			this.prob4Text.Size = new System.Drawing.Size(161, 20);
-			this.prob4Text.TabIndex = 3;
+			this.probMultText.Location = new System.Drawing.Point(28, 321);
+			this.probMultText.Name = "probMultText";
+			this.probMultText.Size = new System.Drawing.Size(161, 20);
+			this.probMultText.TabIndex = 5;
 			// 
 			// probSumText
 			// 
@@ -190,12 +169,33 @@
 			this.probSumText.Size = new System.Drawing.Size(161, 20);
 			this.probSumText.TabIndex = 4;
 			// 
-			// probMultText
+			// prob4Text
 			// 
-			this.probMultText.Location = new System.Drawing.Point(28, 321);
-			this.probMultText.Name = "probMultText";
-			this.probMultText.Size = new System.Drawing.Size(161, 20);
-			this.probMultText.TabIndex = 5;
+			this.prob4Text.Location = new System.Drawing.Point(28, 208);
+			this.prob4Text.Name = "prob4Text";
+			this.prob4Text.Size = new System.Drawing.Size(161, 20);
+			this.prob4Text.TabIndex = 3;
+			// 
+			// prob2Text
+			// 
+			this.prob2Text.Location = new System.Drawing.Point(28, 151);
+			this.prob2Text.Name = "prob2Text";
+			this.prob2Text.Size = new System.Drawing.Size(161, 20);
+			this.prob2Text.TabIndex = 2;
+			// 
+			// prob1Text
+			// 
+			this.prob1Text.Location = new System.Drawing.Point(28, 85);
+			this.prob1Text.Name = "prob1Text";
+			this.prob1Text.Size = new System.Drawing.Size(161, 20);
+			this.prob1Text.TabIndex = 1;
+			// 
+			// threadAmountText
+			// 
+			this.threadAmountText.Location = new System.Drawing.Point(28, 25);
+			this.threadAmountText.Name = "threadAmountText";
+			this.threadAmountText.Size = new System.Drawing.Size(161, 20);
+			this.threadAmountText.TabIndex = 0;
 			// 
 			// cancelBtn
 			// 
@@ -221,6 +221,7 @@
 			this.Controls.Add(this.labelPanel);
 			this.Name = "Settings";
 			this.Text = "Settings";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
 			this.labelPanel.ResumeLayout(false);
 			this.labelPanel.PerformLayout();
 			this.textPanel.ResumeLayout(false);

@@ -9,24 +9,25 @@ namespace KillerSudoku_Master
 {
 	class Benchmark
 	{
-		public long startTime;
-		public long stopTime;
+		public TimeSpan startTime;
+		public TimeSpan stopTime;
 
 		public string getTime()
 		{
-			long time = this.stopTime - this.startTime;
-			long minutes = (time / 1000) / 60;
-			long seconds = (time / 1000) % 60;
-			long milli = time - (seconds * 1000) - (minutes * 60000);
-			return "Time: " + minutes + ':' + seconds + ':' + milli;
+			TimeSpan time = (stopTime.Subtract(startTime));
+			double minutes = time.TotalMinutes;
+			double seconds = time.TotalSeconds;
+			double milli = time.TotalMilliseconds;
+			return "\nTime: " + Math.Round(minutes,5) + ':' + Math.Round(seconds,5)+":"+Math.Round(milli,5)+'\n';
+		
 		}
 		public void start()
 		{
-			this.startTime= DateTimeOffset.Now.ToUnixTimeMilliseconds();
+			this.startTime = DateTime.Now.TimeOfDay;
 		}
 		public void end()
 		{
-			this.stopTime= DateTimeOffset.Now.ToUnixTimeMilliseconds();
+			this.stopTime= DateTime.Now.TimeOfDay;
 		}
 	}
 }

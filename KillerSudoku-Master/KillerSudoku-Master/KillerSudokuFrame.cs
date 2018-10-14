@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -137,6 +138,18 @@ namespace KillerSudoku_Master
 		{
 			MessageBox.Show("Research file explorer to add a name to save");
 			//grid.initialGameBoard.saveBoard();
+		}
+
+		private void clearBtn_Click(object sender, EventArgs e)
+		{
+			this.grid.desplegarSinSolucion();
+		}
+
+		private void solveBtn_Click(object sender, EventArgs e)
+		{
+			this.grid.desplegarConSolucion(grid.initialGameBoard);
+			//this.grid.runApplication();
+			
 		}
 	}
 }

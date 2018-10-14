@@ -19,7 +19,7 @@ namespace KillerSudoku_Master
 		private Benchmark bench = new Benchmark();
 		public Board initialGameBoard;
 		private List<GameBoardThread> threads;
-		public FlowLayoutPanel[][] minisquarePanels;
+		public Panel[][] minisquarePanels;
 		public TextBox[][] grid;
 
 		public KillerSudokuGrid(int threadAmount,Board Savedgame,KillerSudokuFrame Parent)
@@ -35,13 +35,13 @@ namespace KillerSudoku_Master
 			this.dimension = Savedgame.size;
 
 			this.grid = new TextBox[dimension][];
-			this.minisquarePanels = new FlowLayoutPanel[dimension][];
+			this.minisquarePanels = new Panel[dimension][];
 
 			//Initialize jagged array
 			for (int i = 0; i < dimension; i++)
 			{
 				grid[i] = new TextBox[dimension];
-				minisquarePanels[i] = new FlowLayoutPanel[dimension];
+				minisquarePanels[i] = new Panel[dimension];
 			}
 			setup();
 		}
@@ -53,18 +53,17 @@ namespace KillerSudoku_Master
 			this.parent = Parent.getPanel();
 			//Debug.WriteLine(parent.Width.ToString()+"X"+parent.Height.ToString());
 			this.FlowDirection = FlowDirection.LeftToRight;
-			this.BorderStyle = BorderStyle.Fixed3D;
+			this.BorderStyle = BorderStyle.FixedSingle;
 			this.dimension = dimension;
 			this.threadAmount = threadAmount;
-
+			this.Margin = new Padding(0);
 			this.grid = new TextBox[dimension][];
-			this.minisquarePanels = new FlowLayoutPanel[dimension][];
-			
+			this.minisquarePanels = new Panel[dimension][];
 			//Initialize jagged array
 			for(int i = 0; i < dimension; i++)
 			{
 				grid[i] = new TextBox[dimension];
-				minisquarePanels[i] = new FlowLayoutPanel[dimension];
+				minisquarePanels[i] = new Panel[dimension];
 			}
 
 			this.initialGameBoard = new Board(dimension, pProb1, pProb2, pProb4, pProbSum, pProbMult);
@@ -78,7 +77,8 @@ namespace KillerSudoku_Master
 				for (int x = 0; x < dimension; ++x)
 				{
 					TextBox field = new TextBox();
-					field.BorderStyle = BorderStyle.Fixed3D;
+					field.BorderStyle = BorderStyle.None;
+					field.Height = 100;
 					grid[y][x] = field;
 				}
 			}
@@ -87,13 +87,11 @@ namespace KillerSudoku_Master
 			{
 				for (int x = 0; x < dimension; ++x)
 				{
-					FlowLayoutPanel panel = new FlowLayoutPanel();
-					panel.FlowDirection = FlowDirection.LeftToRight;
+					Panel panel = new Panel();
 					panel.Margin = new Padding(0);
-					panel.Width = (int)parent.Width / dimension - 1;
-					panel.Height = (int)parent.Height / dimension - 1;
-					//Debug.WriteLine(panel.Width.ToString() + "X" + panel.Height.ToString());
-					panel.BorderStyle = BorderStyle.Fixed3D;
+					panel.BorderStyle = BorderStyle.FixedSingle;
+					panel.Width = (int)(parent.Width / dimension)-1;
+					panel.Height = (int)(parent.Height/dimension)-1;
 					minisquarePanels[y][x] = panel;
 					this.Controls.Add(panel);
 				}
@@ -103,11 +101,11 @@ namespace KillerSudoku_Master
 			{
 				for (int x = 0; x < dimension; ++x)
 				{
-					grid[y][x].Width = (int)minisquarePanels[y][x].Width / dimension - 1;
-					grid[y][x].Height = (int)minisquarePanels[y][x].Height / dimension - 1;
+					grid[y][x].Margin=new Padding(0);
 					minisquarePanels[y][x].Controls.Add(grid[y][x]);
 				}
 			}
+			desplegarSinSolucion();
 		}
 
 		public void displayOpResult(int indiceOp, List<int> possibleSolution, Board gameBoard)
@@ -139,7 +137,6 @@ namespace KillerSudoku_Master
 				{
 					gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).number = -1;
 					grid[gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).posY][gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).posX].Text = ("");
-
 				}
 			}
 		}
@@ -169,18 +166,16 @@ namespace KillerSudoku_Master
 				Operation op = gameBoard.operations.ElementAt(i);
 				k = op.cells.ElementAt(0).posX;
 				j = op.cells.ElementAt(0).posY;
-				grid[j][k].Font = (new Font("Verdana", 10));
+				grid[j][k].Font = (new Font("Bahnschrift", 10));
 				grid[j][k].Text = (op.toStringFirstCell());
 			}
 		}
 
 		public void desplegarConSolucion(Board gameBoard)
-		{
-
+		{ 
 			bench.end();
 			desplegarProceso(gameBoard);
 			MessageBox.Show("The KillerSudoku was succesfully completed " + bench.getTime() + "Success!");
-
 		}
 
 		public void desplegarSinSolucion()
@@ -196,6 +191,7 @@ namespace KillerSudoku_Master
 					Color bgColor = (Color)converter.ConvertFromString(Board.indexcolors[initialGameBoard.cells[y][x].operationId % 128]);
 					grid[y][x].Text = "";
 					grid[y][x].BackColor = (bgColor);
+					minisquarePanels[y][x].BackColor = (bgColor);
 					if (bgColor.R * 0.299 + bgColor.G * 0.587 + bgColor.B * 0.114 > 186)
 					{
 						grid[y][x].ForeColor = (Color.Black);
@@ -211,7 +207,7 @@ namespace KillerSudoku_Master
 				Operation op = initialGameBoard.operations.ElementAt(i);
 				k = op.cells.ElementAt(0).posX;
 				j = op.cells.ElementAt(0).posY;
-				grid[j][k].Font = (new System.Drawing.Font("Verdana", 12.0f));
+				grid[j][k].Font = (new System.Drawing.Font("Bahnschrift", 15));
 
 				grid[j][k].Text = (op.ToString());
 				Color bgColor = (Color)converter.ConvertFromString(Board.indexcolors[op.operationId % 128]);
@@ -227,7 +223,7 @@ namespace KillerSudoku_Master
 			}
 		}
 
-		private void runApplication()
+		public void runApplication()
 		{
 			initialGameBoard.sortOperations();
 			initialGameBoard.setCellsToZero();

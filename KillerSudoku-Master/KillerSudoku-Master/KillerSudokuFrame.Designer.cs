@@ -172,7 +172,7 @@ namespace KillerSudoku_Master
 			// openToolStripMenuItem
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.openToolStripMenuItem.Text = "Open";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
@@ -195,7 +195,7 @@ namespace KillerSudoku_Master
             this.x18ToolStripMenuItem,
             this.x19ToolStripMenuItem});
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.settingsToolStripMenuItem.Text = "Size";
 			// 
 			// x5ToolStripMenuItem
@@ -306,27 +306,26 @@ namespace KillerSudoku_Master
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// settingsBtn
 			// 
 			this.settingsBtn.Name = "settingsBtn";
-			this.settingsBtn.Size = new System.Drawing.Size(180, 22);
+			this.settingsBtn.Size = new System.Drawing.Size(116, 22);
 			this.settingsBtn.Text = "Settings";
 			this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
 			// 
 			// aboutToolStripMenuItem1
 			// 
 			this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-			this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
 			this.aboutToolStripMenuItem1.Text = "About";
 			this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
 			// 
 			// frame
 			// 
-			this.frame.AutoSize = true;
 			this.frame.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.frame.Location = new System.Drawing.Point(13, 40);
 			this.frame.Name = "frame";
@@ -347,6 +346,7 @@ namespace KillerSudoku_Master
 			this.solveBtn.TabIndex = 2;
 			this.solveBtn.Text = "Solve";
 			this.solveBtn.UseVisualStyleBackColor = true;
+			this.solveBtn.Click += new System.EventHandler(this.solveBtn_Click);
 			// 
 			// clearBtn
 			// 
@@ -362,6 +362,7 @@ namespace KillerSudoku_Master
 			this.clearBtn.TabIndex = 3;
 			this.clearBtn.Text = "Clear";
 			this.clearBtn.UseVisualStyleBackColor = true;
+			this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
 			// 
 			// panel1
 			// 
@@ -402,6 +403,7 @@ namespace KillerSudoku_Master
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.ClientSize = new System.Drawing.Size(772, 555);
 			this.Controls.Add(this.actionLabel);
 			this.Controls.Add(this.titleLabel);

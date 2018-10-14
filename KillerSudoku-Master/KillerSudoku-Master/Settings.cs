@@ -62,7 +62,13 @@ namespace KillerSudoku_Master
 
 		private void cancelBtn_Click(object sender, EventArgs e)
 		{
-			//this.Close();
+		
+			Dispose();
+			parent.actionLabel.Visible = false;
+		}
+
+		private void Settings_FormClosing(object sender, FormClosingEventArgs e)
+		{
 			Dispose();
 			parent.actionLabel.Visible = false;
 		}

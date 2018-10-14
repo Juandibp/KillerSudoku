@@ -13,9 +13,18 @@ namespace KillerSudoku_Master
 	{
 		public static bool notZero(List<Cell> cells)
 		{
-			//	return cells. .noneMatch((cell)-> (cell.number == 0));
-			Debug.WriteLine("HAY QUE ARREGLAR ESTO.Operation Validator");
-			return true;
+			for(int i = 0; i < cells.Count; i++)
+			{
+				if (cells.ElementAt(i).number == 0)
+				{
+					return true;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			return false;
 		}
 	}
 }

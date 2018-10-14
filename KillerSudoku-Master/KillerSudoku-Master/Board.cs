@@ -56,6 +56,10 @@ namespace KillerSudoku_Master
 			this.probSum = other.probSum;
 			this.probMult = other.probMult;
 
+			for (int i = 0; i < size; i++)
+			{
+				cells[i] = new Cell[size];
+			}
 			for(int y =0; y < size; y++)
 			{
 				for (int x = 0; x < size; x++)
