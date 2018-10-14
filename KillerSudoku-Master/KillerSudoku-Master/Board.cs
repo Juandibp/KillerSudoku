@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KillerSudoku_Master
 {
@@ -78,11 +81,17 @@ namespace KillerSudoku_Master
 			this.prob4 = pProb4;
 			this.probSum = pProbSum;
 			this.probMult = pProbMult;
-			possibleNum = new List<int>(boardSize);
 			size = boardSize;
+			possibleNum = new List<int>(boardSize);
 			cells = new Cell[boardSize][];
 			operations = new List<Operation>();
 			rand = 0;
+
+			//Initializing the jagged array
+			for(int i = 0; i < boardSize; i++)
+			{
+				cells[i] = new Cell[boardSize];
+			}
 
 			for (int y = 0; y < boardSize; y++)
 			{
@@ -208,7 +217,7 @@ namespace KillerSudoku_Master
 				initialCell = getNextUncagedCell();
 				xpos = initialCell.posX;
 				ypos = initialCell.posY;
-				Operation op = new Operation(-1);
+				Operation op= new Operation(-1);
 				List<Cell> shape;
 				switch (cageSize)
 				{
@@ -276,7 +285,6 @@ namespace KillerSudoku_Master
 						return cells[y][x];
 					}
 				}
-
 			}
 			return null;
 		}
@@ -594,19 +602,26 @@ namespace KillerSudoku_Master
 			}
 		}
 
-		//TODO: Work on the saveBoard
-		/*public void saveBoard(String filename)
+		public void saveBoard(String filename)
 		{
-			Gson gson = new Gson();
-			BufferedWriter writer;
-			writer = new BufferedWriter(new FileWriter(filename));
-			writer.write(gson.toJson(this));
-			List<String> lines = Arrays.asList(gson.toJson(this));
-			Path file = Paths.get(filename);
-			Files.write(file, lines, Charset.forName("UTF-8"));
-		} */
-		
-		
+			try
+			{
+				JsonSerializer ser = new JsonSerializer();
+				using (StreamWriter sw = new StreamWriter(KillerSudoku.currentUser+"\\SudokusSaves\\" + filename+".board"))
+				using (JsonWriter writer = new JsonTextWriter(sw))
+				{
+					ser.Serialize(writer, this);
+				}
+
+			}
+			catch (IOException)
+			{
+				{
+					MessageBox.Show("File not found");
+				}
+			}
+
+		}
 
 	}
 }

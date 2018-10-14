@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,13 +25,13 @@ namespace KillerSudoku_Master
 
 		public void Start()
 		{
-			Console.WriteLine("Se inicio la ejecucion en el hilo"+this.threadName);
+			Debug.WriteLine("Se inicio la ejecucion en el hilo"+this.threadName);
 			if (backtrackingRandom(0, ArrayListMatrix.copyArrayList(gameBoard.possibleNumRows), ArrayListMatrix.copyArrayList(gameBoard.possibleNumColumns)))
 			{
 				try{
 					sem.WaitOne();
 					Shared.finished = true;
-					Console.WriteLine("Terminoi primero el hilo "+this.threadName);
+					Console.WriteLine("Termino primero el hilo "+this.threadName);
 					this.parent.desplegarConSolucion(this.gameBoard);
 					sem.Release();
 				}catch (ThreadInterruptedException ex)
@@ -493,16 +494,16 @@ namespace KillerSudoku_Master
 
 			switch (op.operationType)
 			{
-				case MULT:
+				case OperationType.MULT:
 					solutions = possibleMultiplicationSubset(op.cellAmount, op.operationResult, possibleNum, new List<int>(), new List<List<int>>());
 					break;
-				case SUM:
+				case OperationType.SUM:
 					solutions = possibleSumSubset(op.cellAmount, op.operationResult, possibleNum, new List<int>(), new List<List<int>>());
 					break;
 
 
 			}
-			if (op.operationType == Operation.OperationType.SUM || op.operationType == Operation.OperationType.MULT)
+			if (op.operationType == OperationType.SUM || op.operationType == OperationType.MULT)
 			{
 				solutions = getAllPermutations(new List<List<int>>(solutions)); //hay que encontrar las permutaciones de las posibilidades dadas
 			}

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KillerSudoku_Master
 {
+	public enum OperationType { POWER,MULT, SUM }
 	public class Operation : IComparable<Operation>
 	{
 		public OperationType operationType;
@@ -13,8 +14,6 @@ namespace KillerSudoku_Master
 		public int cellAmount;
 		public int operationResult;
 		public List<Cell> cells;
-
-		public static enum OperationType { MULT, SUM }
 
 		public Operation(int id)
 		{
@@ -50,6 +49,9 @@ namespace KillerSudoku_Master
 			int auxResult = 0;
 			switch (operationType)
 			{
+				case OperationType.POWER:
+					auxResult = (int)Math.Pow(cells.ElementAt(0).number, 3);
+					break;
 				case OperationType.SUM:
 					for (int i = 0; i < cells.Count; i++)
 					{
@@ -88,6 +90,9 @@ namespace KillerSudoku_Master
 				switch (cellAmount)
 				{
 					case 1:
+						operationType = OperationType.POWER;
+						break;
+					case 2:
 
 						if (r.Next(100) < probMult)
 						{
@@ -103,7 +108,7 @@ namespace KillerSudoku_Master
 
 						break;
 
-					case 2:
+					case 3:
 
 						if (r.Next() < probMult)
 						{
@@ -145,6 +150,8 @@ namespace KillerSudoku_Master
 		{
 			switch (operationType)
 			{
+				case OperationType.POWER:
+					return "^";
 				case OperationType.SUM:
 					return "+";
 				case OperationType.MULT:

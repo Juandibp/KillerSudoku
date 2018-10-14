@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KillerSudoku_Master
@@ -17,12 +11,8 @@ namespace KillerSudoku_Master
 		{
 			this.parent = parent;
 			InitializeComponent();
+			this.Show();
 		}
-
-		/*private void Settings_Load(object sender, EventArgs e)
-		{
-
-		}*/
 
 		private void applyBtn_Click(object sender, EventArgs e)
 		{
@@ -61,6 +51,7 @@ namespace KillerSudoku_Master
 
 					parent.saveSettings(settings);
 					this.Dispose();
+					parent.actionLabel.Visible = false;
 				}
 				catch(FormatException)
 				{
@@ -71,8 +62,9 @@ namespace KillerSudoku_Master
 
 		private void cancelBtn_Click(object sender, EventArgs e)
 		{
-			//Cancel();
+			//this.Close();
 			Dispose();
+			parent.actionLabel.Visible = false;
 		}
 	}
 }

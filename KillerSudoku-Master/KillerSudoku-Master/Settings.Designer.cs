@@ -221,7 +221,6 @@
 			this.Controls.Add(this.labelPanel);
 			this.Name = "Settings";
 			this.Text = "Settings";
-			this.Load += new System.EventHandler(this.Settings_Load);
 			this.labelPanel.ResumeLayout(false);
 			this.labelPanel.PerformLayout();
 			this.textPanel.ResumeLayout(false);
