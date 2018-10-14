@@ -4,11 +4,11 @@ using System.Windows.Forms;
 namespace KillerSudoku_Master
 {
 	
-	public class KillerSudoku
+	public static class KillerSudoku
 	{
 		public static string FengDesktopDirectory = "D:\\josep\\Documents\\GitRepos\\KillerSudoku\\";
 		public static string currentUser=FengDesktopDirectory;
-
+		[STAThread]
 		public static void Main(String[] args)
 		{
 

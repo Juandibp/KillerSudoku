@@ -1,5 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -131,13 +131,42 @@ namespace KillerSudoku_Master
 
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Research how to use the file explorer");
+			OpenFileDialog instance = new OpenFileDialog();
+			instance.ShowDialog();
+			string path = instance.FileName;
+			Debug.WriteLine("File selected = " + path);
+			try
+			{
+				//deserialize JSON directly from a file
+				using (StreamReader file = File.OpenText(@path))
+				{
+					//Debug.WriteLine(file.ReadLine());
+					JsonSerializer serializer = new JsonSerializer();
+					Board savedBoard = new Board(other: JsonConvert.DeserializeObject<Board>(@file.ReadLine()));
+
+					//Load of the saved board with 1 thread by default
+
+					this.grid = new KillerSudokuGrid(1, savedBoard,this);
+					MessageBox.Show("Thread amount reset to 1 thread.");
+				}
+			}
+			catch (IOException)
+			{
+				loadDefaultSettings();
+			}
+			catch (ArgumentException)
+			{
+				loadDefaultSettings();
+			}
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Research file explorer to add a name to save");
-			//grid.initialGameBoard.saveBoard();
+			SaveFileDialog instance = new SaveFileDialog();
+			instance.ShowDialog();
+			Debug.WriteLine("Saving to " +instance.FileName);
+			this.grid.initialGameBoard.saveBoard(instance.FileName);
+			
 		}
 
 		private void clearBtn_Click(object sender, EventArgs e)
@@ -149,7 +178,7 @@ namespace KillerSudoku_Master
 		{
 			this.grid.desplegarConSolucion(grid.initialGameBoard);
 			//this.grid.runApplication();
-			
 		}
+
 	}
 }

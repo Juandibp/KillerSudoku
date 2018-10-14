@@ -110,8 +110,8 @@ namespace KillerSudoku_Master
 			}
 			for (int y = 0; y < boardSize; y++)
 			{
-				possibleNumRows.Add(possibleNum);
-				possibleNumColumns.Add(possibleNum);
+				possibleNumRows.Add(new List<int>(possibleNum));
+				possibleNumColumns.Add(new List<int>(possibleNum));
 			}
 			LatinBoardGenerator(possibleNum, 0, size);
 
@@ -182,26 +182,30 @@ namespace KillerSudoku_Master
 			{
 				return true; //Se asignaron todos lo vértices exitosamente
 			}
-			Cell currentCell = cells[cellNumb / boardSize][cellNumb % boardSize];
-			while (possibleNumbers.Count !=0)
+			else
 			{
-				rand = r.Next(possibleNumbers.Count);
-				contador++;
-				if (contador > boardSize * 2)
+				Cell currentCell = cells[cellNumb / boardSize][cellNumb % boardSize];
+				while (possibleNumbers.Count > 0)
 				{
-					return false;
-				}
-				if (isSafe(currentCell, possibleNumbers.ElementAt(rand)))
-				{ // Determina si a una celda en particular se le puede asignar un numero
-					currentCell.number = possibleNumbers.ElementAt(rand);
-					if (LatinBoardGenerator(possibleNumbers, cellNumb + 1, boardSize))
+					rand = r.Next(possibleNumbers.Count);
+					contador++;
+					if (contador > boardSize * 2)
 					{
-						return true;
+						return false;
+					}
+					if (isSafe(currentCell, possibleNumbers.ElementAt(rand)))
+					{ // Determina si a una celda en particular se le puede asignar un numero
+						currentCell.number = possibleNumbers.ElementAt(rand);
+						if (LatinBoardGenerator(possibleNumbers, cellNumb + 1, boardSize))
+						{
+							return true;
+						}
 					}
 				}
+				currentCell.number = size;
+				return false;
 			}
-			currentCell.number = size;
-			return false;
+			
 		}
 
 		private void OperationGenerator()
@@ -611,12 +615,11 @@ namespace KillerSudoku_Master
 			try
 			{
 				JsonSerializer ser = new JsonSerializer();
-				using (StreamWriter sw = new StreamWriter(KillerSudoku.currentUser+"\\SudokusSaves\\" + filename+".board"))
+				using (StreamWriter sw = new StreamWriter(filename+".board"))
 				using (JsonWriter writer = new JsonTextWriter(sw))
 				{
 					ser.Serialize(writer, this);
 				}
-
 			}
 			catch (IOException)
 			{

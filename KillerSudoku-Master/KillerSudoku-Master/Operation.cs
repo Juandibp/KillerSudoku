@@ -188,7 +188,7 @@ namespace KillerSudoku_Master
 			{
 				result = result + '\t' + "      " + numb;
 			}
-			return result;
+			return result; 
 		}
 
 		public int CompareTo(Operation other)

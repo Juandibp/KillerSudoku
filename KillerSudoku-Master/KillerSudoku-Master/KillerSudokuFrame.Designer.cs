@@ -172,7 +172,7 @@ namespace KillerSudoku_Master
 			// openToolStripMenuItem
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.openToolStripMenuItem.Text = "Open";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
@@ -195,7 +195,7 @@ namespace KillerSudoku_Master
             this.x18ToolStripMenuItem,
             this.x19ToolStripMenuItem});
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.settingsToolStripMenuItem.Text = "Size";
 			// 
 			// x5ToolStripMenuItem
@@ -306,21 +306,21 @@ namespace KillerSudoku_Master
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// settingsBtn
 			// 
 			this.settingsBtn.Name = "settingsBtn";
-			this.settingsBtn.Size = new System.Drawing.Size(116, 22);
+			this.settingsBtn.Size = new System.Drawing.Size(180, 22);
 			this.settingsBtn.Text = "Settings";
 			this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
 			// 
 			// aboutToolStripMenuItem1
 			// 
 			this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-			this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+			this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
 			this.aboutToolStripMenuItem1.Text = "About";
 			this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
 			// 
