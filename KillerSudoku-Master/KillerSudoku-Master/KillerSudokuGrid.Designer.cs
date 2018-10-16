@@ -204,7 +204,7 @@ namespace KillerSudoku_Master
 
 		private void runApplication()
 		{
-			//initialGameBoard.sortOperations();
+			initialGameBoard.sortOperations();
 			initialGameBoard.setCellsToZero();
 			Shared.finished = false;
 			threads = new List<GameBoardThread>(threadAmount);

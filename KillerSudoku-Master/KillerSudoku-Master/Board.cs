@@ -225,7 +225,7 @@ namespace KillerSudoku_Master
 				initialCell = getNextUncagedCell();
 				xpos = initialCell.posX;
 				ypos = initialCell.posY;
-				Operation op= new Operation(-1);
+				Operation op=new Operation(-1);
 				List<Cell> shape;
 				switch (cageSize)
 				{

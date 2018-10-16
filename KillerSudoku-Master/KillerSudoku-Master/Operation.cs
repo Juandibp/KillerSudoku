@@ -99,7 +99,7 @@ namespace KillerSudoku_Master
 
 						if (r.Next(100) < probMult)
 						{
-							if (OperationValidator.notZero(cells))
+							if (OperationValidator.notZero(cells)==false)
 							{
 								operationType = OperationType.MULT;
 							}
@@ -114,7 +114,7 @@ namespace KillerSudoku_Master
 
 						if (r.Next(100) < probMult)
 						{
-							if (OperationValidator.notZero(cells))
+							if (OperationValidator.notZero(cells)==false)
 							{
 								operationType = OperationType.MULT;	
 							}
