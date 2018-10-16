@@ -69,7 +69,8 @@ namespace KillerSudoku_Master
 					}
 					break;
 			}
-			this.operationResult = auxResult;
+            Debug.WriteLine("Elba Lazo " + auxResult);
+            this.operationResult = auxResult;
 		}
 
 		public void setCellsToZero()
@@ -82,31 +83,33 @@ namespace KillerSudoku_Master
 
 		public void generateOperation(int probSum, int probMult)
 		{
-
-			Random r = new Random();
+            Debug.WriteLine("Fran es una puta " + cellAmount);
+            Random r = new Random();
 			cells.Sort();
-			if (r.Next(10) < 5)
+			if (r.Next(1000000000) < 5)
 			{
-				operationType = OperationType.SUM;
+				operationType = OperationType.POWER;
 			}
-			else {
-				switch (cellAmount)
+			else{
+                Debug.WriteLine("Elsi Garro Mata " + cellAmount);
+                switch (cellAmount)
 				{
 					case 1:
 						operationType = OperationType.POWER;
 						break;
+
 					case 2:
 
 						if (r.Next(100) < probMult)
 						{
-							if (OperationValidator.notZero(cells)==false)
-							{
+							//if (OperationValidator.notZero(cells)==false)
+							//{
 								operationType = OperationType.MULT;
-							}
+							//}
 						}
 						else if (r.Next(100) < probSum)
 						{
-							operationType = OperationType.SUM;
+							operationType = OperationType.MULT;
 						}
 						break;
 
@@ -114,17 +117,34 @@ namespace KillerSudoku_Master
 
 						if (r.Next(100) < probMult)
 						{
-							if (OperationValidator.notZero(cells)==false)
-							{
+							//if (OperationValidator.notZero(cells)==false)
+							//{
 								operationType = OperationType.MULT;	
-							}
+							//}
 						}
 						else if (r.Next(100) < probSum)
 						{
 							operationType = OperationType.SUM;
 						}
 						break;
-				}
+                    case 4:
+
+                        /*if (r.Next(100) < probMult)
+                        {
+                            //if (OperationValidator.notZero(cells) == false)
+                           // {
+                                operationType = OperationType.MULT;
+                           // }
+                        }
+                        else if (r.Next(100) < probSum)*/
+                        {
+                            operationType = OperationType.SUM;
+                        }
+                        break;
+                    default:
+                        operationType = OperationType.SUM;
+                        break;
+                }
 				generateResult();
 			}
 
