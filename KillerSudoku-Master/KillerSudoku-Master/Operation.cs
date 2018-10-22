@@ -189,11 +189,11 @@ namespace KillerSudoku_Master
 			int numb = cell.number;
 			if (numb > 0)
 			{
-				result = result + +'\t' + "     " + cells.ElementAt(0).number;
+				result = result + "" + cells.ElementAt(0).number;
 			}
 			else
 			{
-				result = result + '\t' + "     " + cells.ElementAt(0).number;
+				result = result  + "" + cells.ElementAt(0).number;
 			}
 			return result;
 		}
@@ -207,7 +207,7 @@ namespace KillerSudoku_Master
 
 			if (numb > -1)
 			{
-				result = result + '\t' + "      " + numb;
+				result = result + " " + numb;
 			}
 			return result; 
 		}

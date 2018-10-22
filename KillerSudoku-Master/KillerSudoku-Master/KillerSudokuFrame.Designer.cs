@@ -35,7 +35,7 @@ namespace KillerSudoku_Master
 			frame.Visible = true;
 		}
 
-		public Panel getPanel()
+		public FlowLayoutPanel getPanel()
 		{
 			return this.frame;
 		}
@@ -135,13 +135,15 @@ namespace KillerSudoku_Master
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsBtn = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.frame = new System.Windows.Forms.Panel();
 			this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.solveBtn = new System.Windows.Forms.Button();
 			this.clearBtn = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.titleLabel = new System.Windows.Forms.Label();
 			this.actionLabel = new System.Windows.Forms.Label();
+			this.frame = new System.Windows.Forms.FlowLayoutPanel();
+			this.decreaseSize = new System.Windows.Forms.Button();
+			this.increaseSize = new System.Windows.Forms.Button();
 			this.menuBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -153,7 +155,7 @@ namespace KillerSudoku_Master
             this.fileToolStripMenuItem});
 			this.menuBar.Location = new System.Drawing.Point(0, 0);
 			this.menuBar.Name = "menuBar";
-			this.menuBar.Size = new System.Drawing.Size(772, 24);
+			this.menuBar.Size = new System.Drawing.Size(820, 24);
 			this.menuBar.TabIndex = 0;
 			this.menuBar.Text = "menuStrip1";
 			// 
@@ -172,7 +174,7 @@ namespace KillerSudoku_Master
 			// openToolStripMenuItem
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.openToolStripMenuItem.Text = "Open";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
@@ -195,7 +197,7 @@ namespace KillerSudoku_Master
             this.x18ToolStripMenuItem,
             this.x19ToolStripMenuItem});
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.settingsToolStripMenuItem.Text = "Size";
 			// 
 			// x5ToolStripMenuItem
@@ -306,36 +308,28 @@ namespace KillerSudoku_Master
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// settingsBtn
 			// 
 			this.settingsBtn.Name = "settingsBtn";
-			this.settingsBtn.Size = new System.Drawing.Size(180, 22);
+			this.settingsBtn.Size = new System.Drawing.Size(116, 22);
 			this.settingsBtn.Text = "Settings";
 			this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
 			// 
 			// aboutToolStripMenuItem1
 			// 
 			this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-			this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
 			this.aboutToolStripMenuItem1.Text = "About";
 			this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-			// 
-			// frame
-			// 
-			this.frame.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.frame.Location = new System.Drawing.Point(13, 40);
-			this.frame.Name = "frame";
-			this.frame.Size = new System.Drawing.Size(500, 500);
-			this.frame.TabIndex = 1;
 			// 
 			// solveBtn
 			// 
 			this.solveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.solveBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+			this.solveBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.solveBtn.FlatAppearance.BorderSize = 2;
 			this.solveBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
 			this.solveBtn.Font = new System.Drawing.Font("Bahnschrift Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -351,9 +345,9 @@ namespace KillerSudoku_Master
 			// clearBtn
 			// 
 			this.clearBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.clearBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+			this.clearBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.clearBtn.FlatAppearance.BorderSize = 2;
-			this.clearBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+			this.clearBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
 			this.clearBtn.Font = new System.Drawing.Font("Bahnschrift Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.clearBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
 			this.clearBtn.Location = new System.Drawing.Point(27, 114);
@@ -366,20 +360,25 @@ namespace KillerSudoku_Master
 			// 
 			// panel1
 			// 
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.Controls.Add(this.increaseSize);
+			this.panel1.Controls.Add(this.decreaseSize);
 			this.panel1.Controls.Add(this.clearBtn);
 			this.panel1.Controls.Add(this.solveBtn);
-			this.panel1.Location = new System.Drawing.Point(560, 341);
+			this.panel1.Location = new System.Drawing.Point(608, 267);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(200, 199);
+			this.panel1.Size = new System.Drawing.Size(200, 273);
 			this.panel1.TabIndex = 4;
 			// 
 			// titleLabel
 			// 
+			this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.titleLabel.AutoSize = true;
 			this.titleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.titleLabel.Font = new System.Drawing.Font("Bahnschrift Condensed", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
-			this.titleLabel.Location = new System.Drawing.Point(560, 40);
+			this.titleLabel.Location = new System.Drawing.Point(608, 40);
 			this.titleLabel.Name = "titleLabel";
 			this.titleLabel.Size = new System.Drawing.Size(200, 135);
 			this.titleLabel.TabIndex = 5;
@@ -388,15 +387,55 @@ namespace KillerSudoku_Master
 			// 
 			// actionLabel
 			// 
+			this.actionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.actionLabel.AutoSize = true;
 			this.actionLabel.Font = new System.Drawing.Font("Bahnschrift Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.actionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
-			this.actionLabel.Location = new System.Drawing.Point(561, 175);
+			this.actionLabel.Location = new System.Drawing.Point(609, 175);
 			this.actionLabel.Name = "actionLabel";
 			this.actionLabel.Size = new System.Drawing.Size(82, 39);
 			this.actionLabel.TabIndex = 6;
 			this.actionLabel.Text = "Action";
 			this.actionLabel.Visible = false;
+			// 
+			// frame
+			// 
+			this.frame.Location = new System.Drawing.Point(13, 40);
+			this.frame.Name = "frame";
+			this.frame.Size = new System.Drawing.Size(541, 500);
+			this.frame.TabIndex = 7;
+			// 
+			// decreaseSize
+			// 
+			this.decreaseSize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.decreaseSize.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.decreaseSize.FlatAppearance.BorderSize = 2;
+			this.decreaseSize.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
+			this.decreaseSize.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.decreaseSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
+			this.decreaseSize.Location = new System.Drawing.Point(8, 203);
+			this.decreaseSize.Name = "decreaseSize";
+			this.decreaseSize.Size = new System.Drawing.Size(88, 35);
+			this.decreaseSize.TabIndex = 4;
+			this.decreaseSize.Text = "Decrease";
+			this.decreaseSize.UseVisualStyleBackColor = true;
+			this.decreaseSize.Click += new System.EventHandler(this.decreaseSize_Click);
+			// 
+			// increaseSize
+			// 
+			this.increaseSize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.increaseSize.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.increaseSize.FlatAppearance.BorderSize = 2;
+			this.increaseSize.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
+			this.increaseSize.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.increaseSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(204)))));
+			this.increaseSize.Location = new System.Drawing.Point(102, 203);
+			this.increaseSize.Name = "increaseSize";
+			this.increaseSize.Size = new System.Drawing.Size(88, 35);
+			this.increaseSize.TabIndex = 5;
+			this.increaseSize.Text = "Increase";
+			this.increaseSize.UseVisualStyleBackColor = true;
+			this.increaseSize.Click += new System.EventHandler(this.increaseSize_Click);
 			// 
 			// KillerSudokuFrame
 			// 
@@ -404,11 +443,11 @@ namespace KillerSudoku_Master
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.ClientSize = new System.Drawing.Size(772, 555);
+			this.ClientSize = new System.Drawing.Size(820, 555);
+			this.Controls.Add(this.frame);
 			this.Controls.Add(this.actionLabel);
 			this.Controls.Add(this.titleLabel);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.frame);
 			this.Controls.Add(this.menuBar);
 			this.MainMenuStrip = this.menuBar;
 			this.Name = "KillerSudokuFrame";
@@ -426,7 +465,6 @@ namespace KillerSudoku_Master
 
 		private System.Windows.Forms.MenuStrip menuBar;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.Panel frame;
 		private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem x5ToolStripMenuItem;
@@ -453,5 +491,8 @@ namespace KillerSudoku_Master
 		private Panel panel1;
 		private Label titleLabel;
 		public Label actionLabel;
+		private FlowLayoutPanel frame;
+		private Button increaseSize;
+		private Button decreaseSize;
 	}
 }

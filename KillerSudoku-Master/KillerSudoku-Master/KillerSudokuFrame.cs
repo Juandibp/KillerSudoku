@@ -172,13 +172,46 @@ namespace KillerSudoku_Master
 		private void clearBtn_Click(object sender, EventArgs e)
 		{
 			this.grid.desplegarSinSolucion();
+			this.actionLabel.Visible = false;
+			this.Update();
 		}
 
 		private void solveBtn_Click(object sender, EventArgs e)
 		{
 			this.grid.desplegarConSolucion(grid.initialGameBoard);
-			//this.grid.runApplication();
+			this.actionLabel.Text = "Solved.";
+			this.actionLabel.Visible = true;
+			this.Update();
 		}
 
+		private void increaseSize_Click(object sender, EventArgs e)
+		{
+			if (this.Width == 1920 || this.Height == 1080)
+			{
+				MessageBox.Show("Can't be stretched farther.");
+			}
+			else {
+				this.Width = this.Width + 70;
+				this.Height = this.Height + 70;
+				this.frame.Width = frame.Width + 70;
+				frame.Height = frame.Height + 70;
+				this.Update();
+			}
+		}
+
+		private void decreaseSize_Click(object sender, EventArgs e)
+		{
+			if(this.Width== 836 || this.Height== 594)
+			{
+				MessageBox.Show("Can't be shrunk farther.");
+			}
+			else {
+				this.Width = this.Width - 70;
+				this.Height = this.Height - 70;
+				frame.Width = frame.Width - 70;
+				frame.Height = frame.Height - 70;
+				this.Update();
+			}
+		}
 	}
 }

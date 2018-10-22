@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KillerSudoku_Master
 {
 	public class KillerSudokuGrid:FlowLayoutPanel
 	{
-		private Panel parent;
+		private FlowLayoutPanel parent;
 		//Attributes
 		private int dimension;
 		private int threadAmount;
 		private Benchmark bench = new Benchmark();
 		public Board initialGameBoard;
 		private List<GameBoardThread> threads;
-		public Panel[][] minisquarePanels;
+		public FlowLayoutPanel[][] minisquarePanels;
 		public TextBox[][] grid;
 
 		public KillerSudokuGrid(int threadAmount,Board Savedgame,KillerSudokuFrame Parent)
@@ -35,13 +32,13 @@ namespace KillerSudoku_Master
 			this.dimension = Savedgame.size;
 
 			this.grid = new TextBox[dimension][];
-			this.minisquarePanels = new Panel[dimension][];
+			this.minisquarePanels = new FlowLayoutPanel[dimension][];
 
 			//Initialize jagged array
 			for (int i = 0; i < dimension; i++)
 			{
 				grid[i] = new TextBox[dimension];
-				minisquarePanels[i] = new Panel[dimension];
+				minisquarePanels[i] = new FlowLayoutPanel[dimension];
 			}
 			setup();
 		}
@@ -58,12 +55,12 @@ namespace KillerSudoku_Master
 			this.threadAmount = threadAmount;
 			this.Margin = new Padding(0);
 			this.grid = new TextBox[dimension][];
-			this.minisquarePanels = new Panel[dimension][];
+			this.minisquarePanels = new FlowLayoutPanel[dimension][];
 			//Initialize jagged array
 			for(int i = 0; i < dimension; i++)
 			{
 				grid[i] = new TextBox[dimension];
-				minisquarePanels[i] = new Panel[dimension];
+				minisquarePanels[i] = new FlowLayoutPanel[dimension];
 			}
 
 			this.initialGameBoard = new Board(dimension, pProb1, pProb2, pProb4, pProbSum, pProbMult);
@@ -87,8 +84,9 @@ namespace KillerSudoku_Master
 			{
 				for (int x = 0; x < dimension; ++x)
 				{
-					Panel panel = new Panel();
+					FlowLayoutPanel panel = new FlowLayoutPanel();
 					panel.Margin = new Padding(0);
+					panel.FlowDirection = FlowDirection.BottomUp;
 					panel.BorderStyle = BorderStyle.FixedSingle;
 					panel.Width = (int)(parent.Width / dimension)-1;
 					panel.Height = (int)(parent.Height/dimension)-1;
@@ -121,7 +119,7 @@ namespace KillerSudoku_Master
 					}
 					else
 					{
-						grid[gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).posY][gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).posX].Text = (" " + possibleSolution.ElementAt(x));
+						grid[gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).posY][gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(x).posX].Text = ("" + possibleSolution.ElementAt(x));
 					}
 				}
 			}
@@ -157,7 +155,7 @@ namespace KillerSudoku_Master
 					}
 					else if (numb > -1)
 					{
-						grid[y][x].Text = (" " + numb);
+						grid[y][x].Text = ("" + numb);
 					}
 				}
 			}
@@ -166,7 +164,7 @@ namespace KillerSudoku_Master
 				Operation op = gameBoard.operations.ElementAt(i);
 				k = op.cells.ElementAt(0).posX;
 				j = op.cells.ElementAt(0).posY;
-				grid[j][k].Font = (new Font("Bahnschrift", 10));
+				grid[j][k].Font = (new Font("Bahnschrift", 13));
 				grid[j][k].Text = (op.toStringFirstCell());
 			}
 		}
@@ -190,6 +188,7 @@ namespace KillerSudoku_Master
 
 					Color bgColor = (Color)converter.ConvertFromString(Board.indexcolors[initialGameBoard.cells[y][x].operationId % 128]);
 					grid[y][x].Text = "";
+					grid[y][x].Font = (new Font("Bahnschrift", 13));
 					grid[y][x].BackColor = (bgColor);
 					minisquarePanels[y][x].BackColor = (bgColor);
 					if (bgColor.R * 0.299 + bgColor.G * 0.587 + bgColor.B * 0.114 > 186)
@@ -207,7 +206,7 @@ namespace KillerSudoku_Master
 				Operation op = initialGameBoard.operations.ElementAt(i);
 				k = op.cells.ElementAt(0).posX;
 				j = op.cells.ElementAt(0).posY;
-				grid[j][k].Font = (new System.Drawing.Font("Bahnschrift", 15));
+				grid[j][k].Font = (new System.Drawing.Font("Bahnschrift", 13));
 
 				grid[j][k].Text = (op.ToString());
 				Color bgColor = (Color)converter.ConvertFromString(Board.indexcolors[op.operationId % 128]);

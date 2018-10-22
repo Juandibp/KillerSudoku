@@ -50,10 +50,8 @@ namespace KillerSudoku_Master
 					grid[y][x] = field;
 				}
 			}
-
 			this.gridPanel = new Panel();
 			this.buttonPanel = new Panel();
-
 			for (int y = 0; y < dimension; ++y)
 			{
 				for (int x = 0; x < dimension; ++x)
@@ -61,7 +59,6 @@ namespace KillerSudoku_Master
 					TextBox field = new TextBox();
 				}
 			}
-
 			this.minisquarePanels = new Panel[dimension][];
 
 			for (int y = 0; y < dimension; ++y)
@@ -73,7 +70,6 @@ namespace KillerSudoku_Master
 					gridPanel.Controls.Add(panel);
 				}
 			}
-
 			for (int y = 0; y < dimension; ++y)
 			{
 				for (int x = 0; x < dimension; ++x)
@@ -81,9 +77,7 @@ namespace KillerSudoku_Master
 					minisquarePanels[y][x].Controls.Add(grid[y][x]);
 				}
 			}
-
 		}
-
 		public void displayOpResult(int indiceOp, List<int> possibleSolution, Board gameBoard)
 		{
 			grid[gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(0).posY][gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(0).posX].Text = (gameBoard.operations.ElementAt(indiceOp).toStringFirstCell());
@@ -102,7 +96,6 @@ namespace KillerSudoku_Master
 				}
 			}
 		}
-
 		public void removeOpResult(int indiceOp, Board gameBoard)
 		{
 			gameBoard.operations.ElementAt(indiceOp).cells.ElementAt(0).number = -1;
