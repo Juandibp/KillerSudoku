@@ -170,9 +170,10 @@ namespace KillerSudoku_Master
 		}
 
 		public void desplegarConSolucion(Board gameBoard)
-		{ 
-			bench.end();
+		{
+			bench.start();
 			desplegarProceso(gameBoard);
+			bench.end();
 			MessageBox.Show("The KillerSudoku was succesfully completed " + bench.getTime() + "Success!");
 		}
 
