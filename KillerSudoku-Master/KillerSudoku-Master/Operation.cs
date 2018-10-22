@@ -52,20 +52,22 @@ namespace KillerSudoku_Master
 				case OperationType.POWER:
 					//Debug.WriteLine(operationType.ToString() + ":" + OperationType.POWER);
 					auxResult = (int)Math.Pow(cells.ElementAt(0).number, 3);
-					break;
+                    break;
 				case OperationType.SUM:
 					//Debug.WriteLine(operationType.ToString() + ":" + OperationType.SUM);
 					for (int i = 0; i < cells.Count; i++)
 					{
+
 						auxResult = auxResult + cells.ElementAt(i).number;
 					}
 					break;
 				case OperationType.MULT:
 					//Debug.WriteLine(operationType.ToString()+":"+OperationType.MULT);
 					auxResult = 1;
-					for (int i = 0; i < cells.Count; i++)
-					{
-						auxResult = auxResult * cells.ElementAt(i).number;
+                    for (int i = 0; i < cells.Count; i++)
+                    {
+                    
+                        auxResult = auxResult * cells.ElementAt(i).number;
 					}
 					break;
 			}
@@ -83,10 +85,9 @@ namespace KillerSudoku_Master
 
 		public void generateOperation(int probSum, int probMult)
 		{
-            Debug.WriteLine("Fran es una puta " + cellAmount);
             Random r = new Random();
 			cells.Sort();
-			if (r.Next(1000000000) < 5)
+			if (r.Next(1000000000) < 1)
 			{
 				operationType = OperationType.POWER;
 			}
@@ -100,16 +101,16 @@ namespace KillerSudoku_Master
 
 					case 2:
 
-						if (r.Next(100) < probMult)
+						/*if (r.Next(100) < probMult)
 						{
-							//if (OperationValidator.notZero(cells)==false)
+							//if (OperationValidator.notZero(cells))
 							//{
 								operationType = OperationType.MULT;
 							//}
 						}
-						else if (r.Next(100) < probSum)
+						else if (r.Next(100) < probSum)*/
 						{
-							operationType = OperationType.MULT;
+							operationType = OperationType.SUM;
 						}
 						break;
 
